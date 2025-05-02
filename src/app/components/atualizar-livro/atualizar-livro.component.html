@@ -1,0 +1,74 @@
+<div class="conteudo-cadastro">
+    <div class="coluna-formulario">
+        <div class="cartao-formulario">
+            <h2>{{ tituloFormulario }}</h2>
+
+            <form #form="ngForm" (ngSubmit)="submeter()" class="formulario">
+                <label for="titulo">Título</label>
+                <input type="text" id="titulo" placeholder="Digite o título" [(ngModel)]="livro.titulo" name="titulo"
+                    required>
+
+                <label for="autor">Autor</label>
+                <input type="text" id="autor" placeholder="Digite o autor" [(ngModel)]="livro.autor" name="autor"
+                    required>
+
+                <label for="ano">Ano de Publicação</label>
+                <input type="text" id="ano" placeholder="Ex: 2023" [(ngModel)]="livro.anoPublicacao" name="ano"
+                    required>
+
+                <label for="isbn">ISBN</label>
+                <input type="text" id="isbn" placeholder="Digite o ISBN" [(ngModel)]="livro.isbn" name="isbn" required>
+
+                <label for="genero">Gênero</label>
+                <select id="genero" name="genero" [(ngModel)]="livro.genero" required>
+                    <option value="" disabled selected>Selecione o gênero</option>
+                    @for (genero of generos; track genero.label) {
+                    <option [value]="genero.label">{{ genero.label }}</option>
+                    }
+                </select>
+
+                <label for="descricao">Descrição</label>
+                <textarea id="descricao" placeholder="Digite a descrição do livro" [(ngModel)]="livro.descricao"
+                    name="descricao" rows="4" required></textarea>
+
+                <label for="preco">Preço</label>
+                <input type="text" id="preco" placeholder="Digite o preço" [(ngModel)]="livro.preco" name="preco"
+                    required>
+
+                <label for="imagem">URL da Capa</label>
+                <input type="text" id="imagem" placeholder="Cole a URL da imagem" [(ngModel)]="livro.imagemUrl"
+                    name="imagem" required>
+
+                <div class="botoes-centro">
+                    <button type="button" class="botao-cancelar" (click)="cancelar()">Cancelar</button>
+                    <button type="button" [disabled]="!form.valid" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#confirmarSalvarModal">
+                        Salvar Alterações
+                    </button>
+                </div>
+                <div class="modal fade" id="confirmarSalvarModal" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+                                <h5 class="modal-title">Confirmar Alterações</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+
+                            <div class="modal-body">
+                                Tem certeza que deseja salvar as alterações?
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-primary" (click)="submeter()">Confirmar</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

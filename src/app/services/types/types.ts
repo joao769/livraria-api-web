@@ -1,11 +1,11 @@
 export interface Livro {
   id?: number;
-  titulo: string;
-  autor: string;
+  titulo?: string;
+  autor?: string;
   anoPublicacao?: number;
   isbn?: string;
-  genero: string;
-  numeroPaginas?: number;
+  genero?: string;
+  numPaginas?: number;
   descricao?: string;
   preco?: number;
   imagemUrl: string;

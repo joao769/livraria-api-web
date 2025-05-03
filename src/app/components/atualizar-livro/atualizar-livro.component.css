@@ -1,75 +1,102 @@
-.conteudo-cadastro {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    padding: 2rem;
-    gap: 2rem;
-    flex-wrap: wrap;
-}
-
-.coluna-formulario {
-    flex: 1;
-    max-width: 600px;
-}
-
-.cartao-formulario {
-    background-color: #fff;
-    padding: 2rem;
+.form-container {
+    max-width: 700px;
+    margin: 30px auto;
+    padding: 30px;
+    background: #ffffff;
     border-radius: 12px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', sans-serif;
 }
 
-.cartao-formulario h2 {
-    margin-bottom: 1.5rem;
+h2 {
     text-align: center;
+    margin-bottom: 30px;
+    color: #333;
 }
 
-.cartao-formulario label {
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
     display: block;
-    margin-top: 1rem;
-    font-weight: bold;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #444;
 }
 
-.cartao-formulario input,
-.cartao-formulario select,
-.cartao-formulario textarea {
+input[type="text"],
+input[type="number"],
+select,
+textarea {
     width: 100%;
-    padding: 0.5rem;
-    margin-top: 0.5rem;
+    padding: 10px 14px;
     border: 1px solid #ccc;
-    border-radius: 6px;
-    resize: none;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: border-color 0.3s;
 }
 
-.botoes-centro {
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+textarea {
+    resize: none;
+    min-height: 100px;
+}
+
+.error {
+    color: #e74c3c;
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+.form-actions {
     display: flex;
     justify-content: center;
-    gap: 1rem;
-    margin-top: 2rem;
+    gap: 15px;
+    margin-top: 30px;
 }
 
-.botao-cancelar,
-.botoes-centro button[type="submit"] {
-    padding: 0.75rem 1.5rem;
+.btn-cancel,
+.btn-save {
+    padding: 10px 20px;
+    font-size: 15px;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s;
+    transition: background 0.3s ease;
 }
 
-.botao-cancelar {
-    background-color: #6c757d;
+.btn-cancel {
+    background-color: #ccc;
+    color: #333;
+}
+
+.btn-cancel:hover {
+    background-color: #b3b3b3;
+}
+
+.btn-save {
+    background-color: #28a745;
     color: white;
+    transition: background 0.3s ease;
 }
 
-.botoes-centro button[type="submit"]:not(:disabled) {
-    background-color: #198754;
-    color: white;
+.btn-save:hover {
+    background-color: #218838;
 }
 
-.botoes-centro button:disabled {
-    background-color: #e0e0e0;
-    color: #999;
+.btn-save:disabled {
+    background-color: rgba(40, 167, 69, 0.3);
+    color: #666;
     cursor: not-allowed;
+}
+
+.btn-save:disabled:hover {
+    background-color: rgba(40, 167, 69, 0.3);
 }

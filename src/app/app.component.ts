@@ -11,4 +11,8 @@ import { FooterComponent } from "./components/footer/footer.component";
 })
 export class AppComponent {
   title = 'frontend';
+  appDestroyEvent(){
+    console.log('Aplication Destroy');
+    return false;
+  }
 }

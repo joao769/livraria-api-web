@@ -40,7 +40,7 @@ export class CriarLivroComponent implements OnInit {
       numPaginas: ['', [Validators.required, Validators.min(0)]],
       descricao: ['', [Validators.required]],
       preco: ['', [Validators.required, Validators.min(0)]],
-      imagemUrl: ['', [Validators.required, Validators.pattern(/https?:\/\/.+\.(jpg|jpeg|png|gif)/)]],
+      imagemUrl: ['', [Validators.required]],
     })
   }
 
@@ -69,5 +69,4 @@ export class CriarLivroComponent implements OnInit {
       this.userForm.markAllAsTouched();
     }
   }
-
 }

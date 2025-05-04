@@ -47,7 +47,7 @@ html {
   margin-bottom: 30px;
 }
 
-.botao-livros {
+a {
   background-color: #ffc107;
   color: #000;
   padding: 15px 30px;
@@ -58,6 +58,6 @@ html {
   transition: background-color 0.3s;
 }
 
-.botao-livros:hover {
+a:hover {
   background-color: #e0a800;
 }

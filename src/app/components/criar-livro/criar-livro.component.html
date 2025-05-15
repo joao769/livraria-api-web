@@ -1,0 +1,190 @@
+<div class="form-container">
+  <h2>{{tituloFormulario}}</h2>
+
+  <form [formGroup]="userForm" (ngSubmit)="submeter()">
+    <div class="form-group">
+      <label for="titulo">Título</label>
+      <input type="text" id="titulo" formControlName="titulo" placeholder="Informe o título do livro" />
+      <div *ngIf="userForm.get('titulo')?.touched">
+        <div *ngIf="userForm.get('titulo')?.hasError('required')" class="error">O título é obrigatório.</div>
+        <div *ngIf="userForm.get('titulo')?.hasError('maxlength')" class="error">O título não pode exceder 250
+          caracteres.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="autor">Autor</label>
+      <input type="text" id="autor" formControlName="autor" placeholder="Informe o nome do autor" />
+      <div *ngIf="userForm.get('autor')?.touched">
+        <div *ngIf="userForm.get('autor')?.hasError('required')" class="error">O autor é obrigatório.</div>
+        <div *ngIf="userForm.get('autor')?.hasError('pattern')" class="error">O autor não pode conter números.</div>
+        <div *ngIf="userForm.get('autor')?.hasError('maxlength')" class="error">O autor não pode exceder 250 caracteres.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="anoPublicacao">Ano de Publicação</label>
+      <input type="number" id="anoPublicacao" formControlName="anoPublicacao"
+        placeholder="Informe o ano de publicação" />
+      <div *ngIf="userForm.get('anoPublicacao')?.touched">
+        <div *ngIf="userForm.get('anoPublicacao')?.hasError('required')" class="error">O ano de publicação é
+          obrigatório.</div>
+        <div *ngIf="userForm.get('anoPublicacao')?.hasError('min')" class="error">O ano de publicação não pode ser
+          anterior a 1500.</div>
+        <div *ngIf="userForm.get('anoPublicacao')?.hasError('max')" class="error">O ano de publicação não pode ser maior
+          que o ano atual.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="isbn">ISBN</label>
+      <input type="text" id="isbn" formControlName="isbn" placeholder="Informe o ISBN (10 a 13 caracteres)" />
+      <div *ngIf="userForm.get('isbn')?.touched">
+        <div *ngIf="userForm.get('isbn')?.hasError('required')" class="error">O ISBN é obrigatório.</div>
+        <div *ngIf="userForm.get('isbn')?.hasError('minlength')" class="error">O ISBN deve ter pelo menos 10 caracteres.
+        </div>
+        <div *ngIf="userForm.get('isbn')?.hasError('maxlength')" class="error">O ISBN não pode exceder 13 caracteres.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="genero">Gênero</label>
+      <select id="genero" formControlName="genero">
+        <option value="" disabled>Selecione um gênero</option>
+        <option *ngFor="let genero of generos" [value]="genero.label">{{genero.label}}</option>
+      </select>
+      <div *ngIf="userForm.get('genero')?.touched && userForm.get('genero')?.hasError('required')" class="error">O
+        gênero é obrigatório.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="numPaginas">Número de Páginas</label>
+      <input type="number" id="numPaginas" formControlName="numPaginas" placeholder="Informe o número de páginas" />
+      <div *ngIf="userForm.get('numPaginas')?.touched">
+        <div *ngIf="userForm.get('numPaginas')?.hasError('required')" class="error">O número de páginas é obrigatório.
+        </div>
+        <div *ngIf="userForm.get('numPaginas')?.hasError('min')" class="error">O número de páginas não pode ser
+          negativo.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="descricao">Descrição</label>
+      <textarea id="descricao" formControlName="descricao" placeholder="Informe uma descrição do livro"></textarea>
+      <div *ngIf="userForm.get('descricao')?.touched && userForm.get('descricao')?.hasError('required')" class="error">A
+        descrição é obrigatória.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="preco">Preço</label>
+      <input type="number" id="preco" formControlName="preco" placeholder="Informe o preço" />
+      <div *ngIf="userForm.get('preco')?.touched">
+        <div *ngIf="userForm.get('preco')?.hasError('required')" class="error">O preço é obrigatório.</div>
+        <div *ngIf="userForm.get('preco')?.hasError('min')" class="error">O preço não pode ser negativo.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="imagemUrl">Imagem URL</label>
+      <input type="text" id="imagemUrl" formControlName="imagemUrl" placeholder="Informe a URL da imagem do livro" />
+      <div *ngIf="userForm.get('imagemUrl')?.touched && userForm.get('imagemUrl')?.hasError('required')" class="error">A
+        URL da imagem é obrigatória.</div>
+    </div>
+
+    <div class="form-actions">
+      <button type="button" class="btn-cancel" (click)="cancelar()">Cancelar</button>
+      <button type="button" [disabled]="userForm.invalid" class="btn btn-success" data-bs-toggle="modal"
+        data-bs-target="#confirmarAdicionarModal">Adicionar</button>
+    </div>
+
+    <!-- Modal Bootstrap -->
+    <div class="modal fade" id="confirmarAdicionarModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Confirmar Adição</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">Deseja realmente adicionar este livro?</div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-success" data-bs-dismiss="modal"
+              (click)="submeter()">Confirmar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<!-- <div class="conteudo-cadastro">
+  <div class="coluna-formulario">
+    <div class="cartao-formulario">
+      <h2>{{ tituloFormulario }}</h2>
+
+      <form #form="ngForm" (ngSubmit)="submeter()" class="formulario">
+        <label for="titulo">Título</label>
+        <input type="text" id="titulo" placeholder="Digite o título" [(ngModel)]="livro.titulo" name="titulo" required>
+
+        <label for="autor">Autor</label>
+        <input type="text" id="autor" placeholder="Digite o autor" [(ngModel)]="livro.autor" name="autor" required>
+
+        <label for="ano">Ano de Publicação</label>
+        <input type="text" id="ano" placeholder="Ex: 2023" [(ngModel)]="livro.anoPublicacao" name="ano" required>
+
+        <label for="isbn">ISBN</label>
+        <input type="text" id="isbn" placeholder="Digite o ISBN" [(ngModel)]="livro.isbn" name="isbn" required>
+
+        <label for="genero">Gênero</label>
+        <select id="genero" name="genero" [(ngModel)]="livro.genero" required>
+          <option value="" disabled selected>Selecione o gênero</option>
+          @for (genero of generos; track genero.label) {
+          <option [value]="genero.label">{{ genero.label }}</option>
+          }
+        </select>
+
+        <label for="descricao">Descrição</label>
+        <textarea id="descricao" placeholder="Digite a descrição do livro" [(ngModel)]="livro.descricao"
+          name="descricao" rows="4" required></textarea>
+
+        <label for="preco">Preço</label>
+        <input type="text" id="preco" placeholder="Digite o preço" [(ngModel)]="livro.preco" name="preco" required>
+
+        <label for="imagem">URL da Capa</label>
+        <input type="text" id="imagem" placeholder="Cole a URL da imagem" [(ngModel)]="livro.imagemUrl" name="imagem"
+          required>
+
+        <div class="botoes-centro">
+          <button type="button" class="botao-cancelar" (click)="cancelar()">Cancelar</button>
+          <button type="button" [disabled]="!form.valid" class="btn btn-success" data-bs-toggle="modal"
+            data-bs-target="#confirmarAdicionarModal">
+            Adicionar
+          </button>
+        </div>
+        <div class="modal fade" id="confirmarAdicionarModal" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+
+              <div class="modal-header">
+                <h5 class="modal-title">Confirmar Adição</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+
+              <div class="modal-body">
+                Deseja realmente adicionar este item?
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-success" (click)="submeter()">Confirmar</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div> -->

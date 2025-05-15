@@ -22,6 +22,18 @@ export class CriarLivroComponent implements OnInit {
     { label: 'Suspense' },
     { label: 'Autoajuda' },
     { label: 'Biografia' },
+    { label: 'Fantasia' },
+    { label: 'Aventura' },
+    { label: 'Mistério' },
+    { label: 'Histórico' },
+    { label: 'Policial' },
+    { label: 'Infantil' },
+    { label: 'Juvenil' },
+    { label: 'Drama' },
+    { label: 'Humor' },
+    { label: 'Poesia' },
+    { label: 'Ficção Científica' },
+    { label: 'Clássico' }
   ];
 
   formModified: any;

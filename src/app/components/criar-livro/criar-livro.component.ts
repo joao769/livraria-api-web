@@ -13,6 +13,8 @@ import { CommonModule, NgFor, NgIf } from '@angular/common';
 })
 export class CriarLivroComponent implements OnInit {
 
+  mensagemErro: string = '';
+
   generos = [
     { label: 'Romance' },
     { label: 'Ficção' },
@@ -60,13 +62,17 @@ export class CriarLivroComponent implements OnInit {
   }
 
   submeter() {
-    if (this.userForm.valid) {
-      const livro: Livro = this.userForm.value;
-      this.service.adicionar(livro).subscribe(() => {
-        this.router.navigate(['/livros']);
-      });
-    } else {
-      this.userForm.markAllAsTouched();
+    if (this.userForm.invalid) {
+      return;
     }
+
+    this.service.adicionar(this.userForm.value).subscribe({
+      next: () => {
+        this.router.navigate(['/livros']);
+      },
+      error: (err) => {
+        this.mensagemErro = err.error.message || 'Erro ao adicionar livro.';
+      }
+    });
   }
 }

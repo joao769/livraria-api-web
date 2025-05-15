@@ -13,6 +13,8 @@ import { CommonModule, NgFor, NgIf } from '@angular/common';
 })
 export class AtualizarLivroComponent implements OnInit {
 
+  mensagemErro: string = '';
+
   generos = [
     { label: 'Romance' },
     { label: 'Ficção' },
@@ -20,6 +22,18 @@ export class AtualizarLivroComponent implements OnInit {
     { label: 'Suspense' },
     { label: 'Autoajuda' },
     { label: 'Biografia' },
+    { label: 'Fantasia' },
+    { label: 'Aventura' },
+    { label: 'Mistério' },
+    { label: 'Histórico' },
+    { label: 'Policial' },
+    { label: 'Infantil' },
+    { label: 'Juvenil' },
+    { label: 'Drama' },
+    { label: 'Humor' },
+    { label: 'Poesia' },
+    { label: 'Ficção Científica' },
+    { label: 'Clássico' }
   ];
 
   formModified: any;
@@ -83,8 +97,13 @@ export class AtualizarLivroComponent implements OnInit {
 
   submeter() {
     if (this.userForm.valid && this.livroId) {
-      this.service.editar({ id: this.livroId, ...this.userForm.value }).subscribe(() => {
-        this.router.navigate(['/livros']);
+      this.service.editar({ id: this.livroId, ...this.userForm.value }).subscribe({
+        next: () => {
+          this.router.navigate(['/livros']);
+        },
+        error: (err) => {
+          this.mensagemErro = err.error.message || 'Erro ao editar livro.';
+        }
       });
     }
   }

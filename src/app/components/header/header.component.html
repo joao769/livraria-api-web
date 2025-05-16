@@ -2,14 +2,17 @@
     <div class="container-cabecalho">
         <a routerLink="/" class="logo-livraria">
             <img src="https://images.vexels.com/media/users/3/203312/isolated/preview/e1a51c32b1d0e0afc5927d7cfa3d571a-icone-de-livro-aberto-icone-de-livro.png"
-                alt="Ícone" class="icone-logo">
+                alt="Ícone" class="icone-logo" />
             <span class="nome-livraria">Minha Livraria</span>
         </a>
 
-        <ul class="menu-navegacao">
+        <div class="menu-toggle" (click)="menuAberto = !menuAberto">☰</div>
+
+        <ul class="menu-navegacao" [class.aberto]="menuAberto">
             @for (item of itensMenu; track item.link) {
             <li class="item-menu">
-                <a class="link-navegacao" [routerLink]="item.link">
+                <a class="link-navegacao" [routerLink]="item.link" routerLinkActive="ativo"
+                    [routerLinkActiveOptions]="{ exact: true }" (click)="menuAberto = false">
                     {{ item.label }}
                 </a>
             </li>

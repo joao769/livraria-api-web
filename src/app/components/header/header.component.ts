@@ -1,3 +1,4 @@
+import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
@@ -17,5 +18,5 @@ export class HeaderComponent {
     { label: 'Adiconar', link: '/livros/adicionar' },
     { label: 'Alterar', link: '/livros/listar' },
   ]
-
+  menuAberto = false;
 }

@@ -1,19 +1,13 @@
 <h2 class="titulo">Livros Cadastrados</h2>
 
 <div class="card-container">
-  @for (livro of exibirLivros; track livro) {
-  <div class="card">
-    <img [src]="livro.imagemUrl" alt="Capa do livro" />
+  <div class="card" *ngFor="let livro of exibirLivros">
+    <img [src]="livro.imagemUrl" alt="Capa do livro" class="livro-imagem" />
     <div class="card-content">
-      <h3>{{ livro.titulo }}</h3>
-      <p><strong>Autor:</strong> {{ livro.autor }}</p>
-      <p><strong>Ano:</strong> {{ livro.anoPublicacao }}</p>
-      <p><strong>ISBN:</strong> {{ livro.isbn }}</p>
-      <p><strong>Páginas:</strong> {{ livro.numPaginas }}</p>
-      <p><strong>Gênero:</strong> {{livro.genero}} </p>
-      <p class="descricao">{{ livro.descricao }}</p>
-      <p><strong>Preço:</strong> R$ {{ livro.preco }}</p>
+      <h3 class="titulo-livro">{{ livro.titulo }}</h3>
+      <button [routerLink]="['/livros', livro.id]" class="btn-ver-detalhes">
+        Ver Detalhes
+      </button>
     </div>
   </div>
-  }
 </div>

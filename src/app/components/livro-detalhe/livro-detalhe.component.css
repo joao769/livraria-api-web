@@ -1,0 +1,108 @@
+.detalhe-container {
+  display: flex;
+  max-width: 1000px;
+  margin :2rem auto;
+  font-family: 'Segoe UI', sans-serif;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+}
+.imagem-card {
+  flex: 0 0 50%;
+  max-width: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.imagem-livro {
+  width: 100%;
+  height: auto;
+  max-height: 600px;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  object-fit: contain;
+}
+
+.card {
+  flex: 0 0 40%;
+  min-width: 300px;
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+
+.imagem-livro {
+  width: 100%;
+  height: auto;
+  max-height: 600px;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  object-fit: contain;
+}
+
+.card {
+  flex: 0 0 45%;
+  min-width: 300px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.titulo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #343a40;
+  margin-bottom: 0.5rem;
+}
+
+.descricao {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.preco {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #198754;
+  margin-bottom: 1.5rem;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.info-box {
+  background-color: #f8f9fa;
+  border-left: 4px solid #0d6efd;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  font-size: 14px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.info-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(13, 110, 253, 0.15);
+  background-color: #e9f2ff;
+}

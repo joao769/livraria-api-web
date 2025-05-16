@@ -1,0 +1,24 @@
+<div class="detalhe-container" *ngIf="exibirLivro as livro">
+  <div class="imagem-card">
+    <img [src]="livro.imagemUrl" alt="Capa do livro" class="imagem-livro" />
+  </div>
+
+  <div class="card conteudo-card">
+    <h2 class="titulo">{{ livro.titulo }}</h2>
+
+    <div class="info-grid">
+      <div class="info-box"><strong>Autor:</strong> {{ livro.autor }}</div>
+      <div class="info-box"><strong>Ano:</strong> {{ livro.anoPublicacao }}</div>
+      <div class="info-box"><strong>ISBN:</strong> {{ livro.isbn }}</div>
+      <div class="info-box"><strong>Gênero:</strong> {{ livro.genero }}</div>
+      <div class="info-box"><strong>Páginas:</strong> {{ livro.numPaginas }}</div>
+    </div>
+
+    <div class="info-detalhes">
+      <strong>Descrição:</strong>
+      <p class="descricao">{{ livro.descricao }}</p>
+      <strong>Preço:</strong>
+      <p class="preco">R$ {{ livro.preco }}</p>
+    </div>
+  </div>
+</div>

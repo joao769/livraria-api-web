@@ -19,34 +19,9 @@ export class ExibirLivrosComponent implements OnInit {
     private router: Router
   ) { }
 
-  voltar() {
-    this.router.navigate(['/']);
-  }
-
   ngOnInit(): void {
     this.service.listar().subscribe((livros) => {
       this.exibirLivros = livros;
     })
   }
-
-  excluir(id: number) {
-    if (id) {
-      this.service.excluir(id).subscribe(() => {
-        window.location.reload()
-      })
-    }
-  }
-
-  /*postsList: Ipost[] = [];
-
-  readonly _livrosService = inject(LivrosService);
-
-  ngOnInit(): void {
-    this._livrosService.getPost().subscribe(
-      (response) => {
-        console.log('Response: ', response);
-        this.postsList = response;
-      }
-    );
-  }*/
 }

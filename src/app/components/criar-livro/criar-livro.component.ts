@@ -1,13 +1,12 @@
-import { Component, NgModule, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LivrosService } from '../../services/livros.service';
 import { Livro } from '../../services/types/types';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { CommonModule, NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-criar-livro',
-  imports: [FormsModule, ReactiveFormsModule, NgIf, NgFor],
+  imports: [FormsModule, ReactiveFormsModule ],
   templateUrl: './criar-livro.component.html',
   styleUrls: ['./criar-livro.component.css']
 })

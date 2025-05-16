@@ -2,11 +2,10 @@ import { Component } from '@angular/core';
 import { LivrosService } from '../../services/livros.service';
 import { Livro } from '../../services/types/types';
 import { ActivatedRoute } from '@angular/router';
-import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-livro-detalhes',
-  imports: [NgIf],
+  imports: [],
   templateUrl: './livro-detalhes.component.html',
   styleUrl: './livro-detalhes.component.css'
 })

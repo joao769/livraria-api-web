@@ -4,7 +4,7 @@ import { LivrosService } from '../../services/livros.service';
 import { Router, RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-listar-livros',
+  selector: 'app-listar-livro',
   imports: [RouterLink],
   templateUrl: './listar-livros.component.html',
   styleUrl: './listar-livros.component.css'

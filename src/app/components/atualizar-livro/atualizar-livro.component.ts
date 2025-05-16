@@ -3,11 +3,10 @@ import { LivrosService } from '../../services/livros.service';
 import { Livro } from '../../services/types/types';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { CommonModule, NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-atualizar-livro',
-  imports: [FormsModule, ReactiveFormsModule, NgIf, NgFor],
+  imports: [FormsModule, ReactiveFormsModule ],
   templateUrl: './atualizar-livro.component.html',
   styleUrl: './atualizar-livro.component.css'
 })

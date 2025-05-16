@@ -4,12 +4,12 @@ import { LivrosService } from '../../services/livros.service';
 import { Router, RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-listar-livro',
+  selector: 'app-listar-livros',
   imports: [RouterLink],
-  templateUrl: './listar-livro.component.html',
-  styleUrl: './listar-livro.component.css'
+  templateUrl: './listar-livros.component.html',
+  styleUrl: './listar-livros.component.css'
 })
-export class ListarLivroComponent implements OnInit {
+export class ListarLivrosComponent implements OnInit {
 
 
   listaLivros: Livro[] = [];

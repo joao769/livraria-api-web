@@ -5,12 +5,12 @@ import { ActivatedRoute } from '@angular/router';
 import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-livro-detalhe',
+  selector: 'app-livro-detalhes',
   imports: [NgIf],
-  templateUrl: './livro-detalhe.component.html',
-  styleUrl: './livro-detalhe.component.css'
+  templateUrl: './livro-detalhes.component.html',
+  styleUrl: './livro-detalhes.component.css'
 })
-export class LivroDetalheComponent {
+export class LivroDetalhesComponent {
 
   exibirLivro?: Livro;
 

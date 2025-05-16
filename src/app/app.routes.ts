@@ -2,9 +2,9 @@ import { Routes } from '@angular/router';
 import { CriarLivroComponent } from './components/criar-livro/criar-livro.component';
 import { HomeComponent } from './components/home/home.component';
 import { ExibirLivrosComponent } from './components/exibir-livros/exibir-livros.component';
-import { ListarLivroComponent } from './components/listar-livro/listar-livro.component';
+import { ListarLivrosComponent } from './components/listar-livros/listar-livros.component';
 import { AtualizarLivroComponent } from './components/atualizar-livro/atualizar-livro.component';
-import { LivroDetalheComponent } from './components/livro-detalhe/livro-detalhe.component';
+import { LivroDetalhesComponent } from './components/livro-detalhes/livro-detalhes.component';
 
 export const routes: Routes = [
 
@@ -20,7 +20,7 @@ export const routes: Routes = [
     },
     {
         path: 'livros/listar',
-        component: ListarLivroComponent,
+        component: ListarLivrosComponent,
         title: 'Listar livros'
     },
     {
@@ -35,6 +35,6 @@ export const routes: Routes = [
     },
     {
         path: 'livros/:id',
-        component: LivroDetalheComponent 
+        component: LivroDetalhesComponent 
     },
 ];

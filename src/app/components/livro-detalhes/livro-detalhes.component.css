@@ -1,11 +1,12 @@
 .detalhe-container {
   display: flex;
   max-width: 1000px;
-  margin :2rem auto;
-  font-family: 'Segoe UI', sans-serif;
+  margin: 2rem auto;
   align-items: flex-start;
   flex-wrap: nowrap;
+  gap: 2rem;
 }
+
 .imagem-card {
   flex: 0 0 50%;
   max-width: 600px;
@@ -17,29 +18,6 @@
   border-radius: 0;
   box-shadow: none;
 }
-
-.imagem-livro {
-  width: 100%;
-  height: auto;
-  max-height: 600px;
-  border: none;
-  border-radius: 0;
-  box-shadow: none;
-  object-fit: contain;
-}
-
-.card {
-  flex: 0 0 40%;
-  min-width: 300px;
-  background-color: #ffffff;
-  border-radius: 4px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
 
 .imagem-livro {
   width: 100%;
@@ -105,4 +83,41 @@
   transform: translateY(-3px);
   box-shadow: 0 6px 12px rgba(13, 110, 253, 0.15);
   background-color: #e9f2ff;
+}
+
+@media (max-width: 900px) {
+  .detalhe-container {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .imagem-card, .card {
+    flex: 0 0 90%;
+    max-width: 90%;
+    min-width: auto;
+    margin-bottom: 1.5rem;
+  }
+  
+  .imagem-livro {
+    max-height: 400px;
+  }
+}
+
+@media (max-width: 500px) {
+  .titulo {
+    font-size: 1.4rem;
+  }
+  
+  .descricao {
+    font-size: 0.9rem;
+  }
+  
+  .preco {
+    font-size: 1.3rem;
+  }
+  
+  .info-box {
+    font-size: 12px;
+    padding: 0.6rem 0.8rem;
+  }
 }

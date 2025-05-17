@@ -1,5 +1,5 @@
 <div class="form-container">
-    <h2>{{tituloFormulario}}</h2>
+    <h2>{{ tituloFormulario }}</h2>
 
     <form [formGroup]="userForm" (ngSubmit)="submeter()">
         <div class="form-group">
@@ -73,7 +73,7 @@
             <select id="genero" formControlName="genero">
                 <option value="" disabled>Selecione um gênero</option>
                 @for (genero of generos; track genero.label) {
-                <option [value]="genero.label">{{genero.label}}</option>
+                <option [value]="genero.label">{{ genero.label }}</option>
                 }
             </select>
 
@@ -132,15 +132,13 @@
         </div>
 
         @if (mensagemErro) {
-        <div class="alert alert-danger">
-            {{ mensagemErro }}
-        </div>
+        <div class="alert alert-danger">{{ mensagemErro }}</div>
         }
 
         <div class="form-actions">
             <button type="button" class="btn-cancel" (click)="cancelar()">Cancelar</button>
             <button type="button" [disabled]="userForm.invalid" class="btn btn-success" data-bs-toggle="modal"
-                data-bs-target="#confirmarAdicionarModal">Salvar Alteraões</button>
+                data-bs-target="#confirmarAdicionarModal">Salvar Alterações</button>
         </div>
 
         <div class="modal fade" id="confirmarAdicionarModal" tabindex="-1" aria-hidden="true">

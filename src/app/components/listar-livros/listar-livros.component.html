@@ -15,9 +15,11 @@
                     <td>{{livro.id}}</td>
                     <td>{{livro.titulo}}</td>
                     <td>
+                        <div class="acoes">
                         <button class="btn-editar" [routerLink]="['/livros/alterar', livro.id]">Editar</button>
                         <button class="btn-excluir" data-bs-toggle="modal"
                             [attr.data-bs-target]="'#exampleModal'+livro.id!">Excluir</button>
+                            </div>
                     </td>
                     <!-- Modal Bootstrap -->
                     <div class="modal fade" [id]="'exampleModal'+livro.id!" tabindex="-1" role="dialog"
@@ -35,7 +37,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Close</button>
+                                        data-bs-dismiss="modal">Cancelar</button>
                                     <button type="button" id="btn-excluir" class="btn btn-danger ignore-beforeunload"
                                         data-bs-dismiss="modal" (click)="excluir(livro.id!)">Excluir</button>
                                 </div>

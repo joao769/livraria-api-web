@@ -1,14 +1,7 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body,
 html {
   height: 100%;
   margin: 0;
-  font-family: 'Inter', sans-serif;
   background-color: #1E1E2F;
   color: #EAEAEA;
 }
@@ -80,4 +73,20 @@ html {
 .botao-banner:hover {
   background-color: #2C5670;
   transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .titulo-banner {
+    font-size: 2.2rem;
+  }
+
+  .subtitulo-banner {
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+
+  .botao-banner {
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
 }

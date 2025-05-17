@@ -6,7 +6,11 @@
             <span class="nome-livraria">Minha Livraria</span>
         </a>
 
-        <div class="menu-toggle" (click)="menuAberto = !menuAberto">☰</div>
+        <div class="menu-toggle" [class.active]="menuAberto" (click)="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
 
         <ul class="menu-navegacao" [class.aberto]="menuAberto">
             @for (item of itensMenu; track item.link) {

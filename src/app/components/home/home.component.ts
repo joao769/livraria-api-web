@@ -9,6 +9,6 @@ import { RouterLink } from '@angular/router';
 })
 export class HomeComponent {
 
-  titulo: string = 'Bem-vindo à Minha Livraria'
+  titulo: string = 'Bem-vindo à Livraria-api'
 
 }

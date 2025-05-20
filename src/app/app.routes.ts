@@ -26,15 +26,16 @@ export const routes: Routes = [
     {
         path: 'livros/adicionar',
         component: CriarLivroComponent,
-        title: 'Livros - Adicionar'
+        title: 'Adicionar Livros'
     },
     {
         path: 'livros/alterar/:id',
         component: AtualizarLivroComponent,
-        title: 'Livros - Alterar'
+        title: 'Alterar Livros'
     },
     {
         path: 'livros/:id',
-        component: LivroDetalhesComponent 
+        component: LivroDetalhesComponent,
+        title: 'Detalhe do Livro'
     },
 ];

@@ -2,11 +2,11 @@ import { Component, NgModule, OnInit } from '@angular/core';
 import { LivrosService } from '../../services/livros.service';
 import { Livro } from '../../services/types/types';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-atualizar-livro',
-  imports: [FormsModule, ReactiveFormsModule ],
+  imports: [FormsModule, ReactiveFormsModule],
   templateUrl: './atualizar-livro.component.html',
   styleUrl: './atualizar-livro.component.css'
 })
@@ -42,19 +42,23 @@ export class AtualizarLivroComponent implements OnInit {
   }
 
   userForm: FormGroup = new FormGroup({});
-
   initializeForm() {
     this.userForm = this.fb.group({
-      titulo: ['', [Validators.required, Validators.maxLength(250)]],
-      autor: ['', [Validators.required, Validators.maxLength(250), Validators.pattern(/^[^\d]*$/)]],
+      titulo: ['', [Validators.required, Validators.maxLength(250), this.noOnlySpacesValidator]],
+      autor: ['', [Validators.required, Validators.maxLength(250), Validators.pattern(/^[^\d]*$/), this.noOnlySpacesValidator]],
       anoPublicacao: ['', [Validators.required, Validators.min(1500), Validators.max(new Date().getFullYear())]],
-      isbn: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(13)]],
+      isbn: ['', [Validators.required, Validators.pattern(/^(?:\d{9}[\dXx]|\d{13})$/), this.noOnlySpacesValidator]],
       genero: ['', [Validators.required]],
-      numPaginas: ['', [Validators.required, Validators.min(0)]],
-      descricao: ['', [Validators.required]],
-      preco: ['', [Validators.required, Validators.min(0)]],
-      imagemUrl: ['', [Validators.required, Validators.pattern(/https?:\/\/.+\.(jpg|jpeg|png|gif)/)]],
+      numPaginas: ['', [Validators.required, Validators.min(1)]],
+      descricao: ['', [Validators.required, Validators.maxLength(1000), this.noOnlySpacesValidator]],
+      preco: ['', [Validators.required, Validators.min(0), Validators.pattern(/^-?\d+(\.\d{1,2})?$/)]],
+      imagemUrl: ['', [Validators.required, Validators.pattern(/^https?:\/\/.*\.(jpg|jpeg|png|gif)$/i)]],
     })
+  }
+
+  noOnlySpacesValidator(control: AbstractControl) {
+    const isValid = control.value && control.value.trim().length > 0;
+    return isValid ? null : { onlySpaces: true };
   }
 
   livroId?: number;

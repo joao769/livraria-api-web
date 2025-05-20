@@ -6,10 +6,9 @@ import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-listar-livros',
-  imports: [RouterLink, NgFor],
+  imports: [RouterLink],
   templateUrl: './exibir-livros.component.html',
   styleUrls: ['./exibir-livros.component.css'],
-  standalone: true
 })
 export class ExibirLivrosComponent implements OnInit {
 

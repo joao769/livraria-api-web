@@ -1,52 +1,64 @@
-<body>
-
-    <div class="conteudo-principal">
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Título</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                @for (livro of listaLivros; track livro ){
-                <tr>
-                    <td>{{livro.id}}</td>
-                    <td>{{livro.titulo}}</td>
-                    <td>
-                        <div class="acoes">
+<div class="conteudo-principal">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (livro of listaLivros; track livro) {
+            <tr>
+                <td>{{ livro.id }}</td>
+                <td>{{ livro.titulo }}</td>
+                <td>
+                    <div class="acoes">
                         <button class="btn-editar" [routerLink]="['/livros/alterar', livro.id]">Editar</button>
-                        <button class="btn-excluir" data-bs-toggle="modal"
-                            [attr.data-bs-target]="'#exampleModal'+livro.id!">Excluir</button>
-                            </div>
-                    </td>
-                    <!-- Modal Bootstrap -->
-                    <div class="modal fade" [id]="'exampleModal'+livro.id!" tabindex="-1" role="dialog"
-                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Confirmação Exclusão</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    Tem certeza de que deseja excluir o livro <span
-                                        style="color: red;">{{livro.titulo}}</span>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Cancelar</button>
-                                    <button type="button" id="btn-excluir" class="btn btn-danger ignore-beforeunload"
-                                        data-bs-dismiss="modal" (click)="excluir(livro.id!)">Excluir</button>
-                                </div>
-                            </div>
+                        <button class="btn-excluir" data-bs-toggle="modal" [attr.data-bs-target]="'#modal' + livro.id">
+                            Excluir
+                        </button>
+                    </div>
+                </td>
+            </tr>
+
+            <div class="modal fade" [id]="'modal' + livro.id" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Confirmação Exclusão</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Tem certeza de que deseja excluir o livro <span style="color: red;">{{ livro.titulo
+                                }}</span>?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-danger ignore-beforeunload" data-bs-dismiss="modal"
+                                (click)="excluir(livro.id!)">Excluir</button>
                         </div>
                     </div>
-                </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-</body>
+                </div>
+            </div>
+            }
+        </tbody>
+    </table>
+
+@if (listaCompleta.length > 0 && totalPaginas > 1) {
+  <div class="paginacao" style="text-align: right;">
+    <button class="seta" (click)="paginaAnterior()" [disabled]="paginaAtual === 1">‹</button>
+
+    @for (pagina of paginas; track pagina) {
+      <button
+        [ngClass]="{'pagina-ativa': pagina === paginaAtual}"
+        (click)="irParaPagina(pagina)">
+        {{ pagina }}
+      </button>
+    }
+
+    <button class="seta" (click)="proximaPagina()" [disabled]="paginaAtual === totalPaginas">›</button>
+  </div>
+}
+</div>

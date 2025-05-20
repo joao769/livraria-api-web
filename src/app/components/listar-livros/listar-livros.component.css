@@ -84,6 +84,35 @@ th {
   font-weight: bold;
 }
 
+.paginacao {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.paginacao .seta,
+.paginacao button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem 0.6rem;
+  font-size: 1rem;
+  color: #333;
+}
+
+.paginacao button.pagina-ativa {
+  border: 1px solid #007bff;
+  border-radius: 6px;
+  color: #007bff;
+  font-weight: bold;
+}
+
+.paginacao button:disabled {
+  color: #ccc;
+  cursor: default;
+}
+
 @media (max-width: 768px) {
   .acoes {
     flex-direction: column;

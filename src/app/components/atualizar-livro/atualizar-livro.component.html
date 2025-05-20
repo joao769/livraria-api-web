@@ -1,146 +1,189 @@
 <div class="form-container">
-    <h2>{{ tituloFormulario }}</h2>
+    <h2>{{tituloFormulario}}</h2>
 
     <form [formGroup]="userForm" (ngSubmit)="submeter()">
+
+        <!-- Título -->
         <div class="form-group">
             <label for="titulo">Título</label>
             <input type="text" id="titulo" formControlName="titulo" placeholder="Informe o título do livro" />
 
             @if (userForm.get('titulo')?.touched) {
-            @if (userForm.get('titulo')?.hasError('required')) {
-            <div class="error">O título é obrigatório.</div>
-            }
-            @if (userForm.get('titulo')?.hasError('maxlength')) {
-            <div class="error">O título não pode exceder 250 caracteres.</div>
-            }
+                @if (userForm.get('titulo')?.hasError('required')) {
+                    <div class="error">O título é obrigatório.</div> 
+                }
+                @if (userForm.get('titulo')?.hasError('maxlength')) {
+                    <div class="error">O título não pode exceder 250 caracteres.</div>
+                }
+                @if (userForm.get('titulo')?.hasError('onlySpaces')) {
+                    <div class="error">O título não pode ter só espaços em branco.</div>
+                }
+                @if (userForm.get('titulo')?.hasError('leadingTrailingSpaces')) {
+                    <div class="error">O título não pode começar ou terminar com espaço em branco.</div>
+                }
             }
         </div>
 
+        <!-- Autor -->
         <div class="form-group">
             <label for="autor">Autor</label>
             <input type="text" id="autor" formControlName="autor" placeholder="Informe o nome do autor" />
 
             @if (userForm.get('autor')?.touched) {
-            @if (userForm.get('autor')?.hasError('required')) {
-            <div class="error">O autor é obrigatório.</div>
-            }
-            @if (userForm.get('autor')?.hasError('pattern')) {
-            <div class="error">O autor não pode conter números.</div>
-            }
-            @if (userForm.get('autor')?.hasError('maxlength')) {
-            <div class="error">O autor não pode exceder 250 caracteres.</div>
-            }
+                @if (userForm.get('autor')?.hasError('required')) {
+                    <div class="error">O autor é obrigatório.</div>
+                }
+                @if (userForm.get('autor')?.hasError('maxlength')) {
+                    <div class="error">O autor não pode exceder 250 caracteres.</div>
+                }
+                @if (userForm.get('autor')?.hasError('pattern')) {
+                    <div class="error">O autor não pode conter números.</div>
+                }
+                @if (userForm.get('autor')?.hasError('onlySpaces')) {
+                    <div class="error">O autor não pode ter só espaços em branco.</div>
+                }
+                @if (userForm.get('autor')?.hasError('leadingTrailingSpaces')) {
+                    <div class="error">O autor não pode começar ou terminar com espaço em branco.</div>
+                }
             }
         </div>
 
+        <!-- Ano de Publicação -->
         <div class="form-group">
             <label for="anoPublicacao">Ano de Publicação</label>
-            <input type="number" id="anoPublicacao" formControlName="anoPublicacao"
-                placeholder="Informe o ano de publicação" />
+            <input type="number" id="anoPublicacao" formControlName="anoPublicacao" placeholder="Informe o ano de publicação" />
 
             @if (userForm.get('anoPublicacao')?.touched) {
-            @if (userForm.get('anoPublicacao')?.hasError('required')) {
-            <div class="error">O ano de publicação é obrigatório.</div>
-            }
-            @if (userForm.get('anoPublicacao')?.hasError('min')) {
-            <div class="error">O ano de publicação não pode ser anterior a 1500.</div>
-            }
-            @if (userForm.get('anoPublicacao')?.hasError('max')) {
-            <div class="error">O ano de publicação não pode ser maior que o ano atual.</div>
-            }
+                @if (userForm.get('anoPublicacao')?.hasError('required')) {
+                    <div class="error">O ano de publicação é obrigatório.</div>
+                }
+                @if (userForm.get('anoPublicacao')?.hasError('min')) {
+                    <div class="error">O ano de publicação não pode ser anterior a 1500.</div>
+                }
+                @if (userForm.get('anoPublicacao')?.hasError('max')) {
+                    <div class="error">O ano de publicação não pode ser maior que o ano atual.</div>
+                }
             }
         </div>
 
+        <!-- ISBN -->
         <div class="form-group">
             <label for="isbn">ISBN</label>
-            <input type="text" id="isbn" formControlName="isbn" placeholder="Informe o ISBN (10 a 13 caracteres)" />
+            <input type="text" id="isbn" formControlName="isbn"placeholder="Digite o ISBN (10 ou 13 dígitos, X opcional no final)" />
 
             @if (userForm.get('isbn')?.touched) {
-            @if (userForm.get('isbn')?.hasError('required')) {
-            <div class="error">O ISBN é obrigatório.</div>
-            }
-            @if (userForm.get('isbn')?.hasError('minlength')) {
-            <div class="error">O ISBN deve ter pelo menos 10 caracteres.</div>
-            }
-            @if (userForm.get('isbn')?.hasError('maxlength')) {
-            <div class="error">O ISBN não pode exceder 13 caracteres.</div>
-            }
+                @if (userForm.get('isbn')?.hasError('required')) {
+                    <div class="error">O ISBN é obrigatório.</div>
+                }
+                @if (userForm.get('isbn')?.hasError('pattern')) {
+                    <div class="error">O ISBN deve ter 10 (com dígito final X opcional) ou 13 dígitos numéricos.</div>
+                }
+                @if (userForm.get('isbn')?.hasError('onlySpaces')) {
+                    <div class="error">O ISBN não pode ter só espaços em branco.</div>
+                }
             }
         </div>
 
+        <!-- Gênero -->
         <div class="form-group">
             <label for="genero">Gênero</label>
             <select id="genero" formControlName="genero">
                 <option value="" disabled>Selecione um gênero</option>
                 @for (genero of generos; track genero.label) {
-                <option [value]="genero.label">{{ genero.label }}</option>
+                    <option [value]="genero.label">{{genero.label}}</option>
                 }
             </select>
 
             @if (userForm.get('genero')?.touched && userForm.get('genero')?.hasError('required')) {
-            <div class="error">O gênero é obrigatório.</div>
+                <div class="error">O gênero é obrigatório.</div>
             }
         </div>
 
+        <!-- Número de Páginas -->
         <div class="form-group">
             <label for="numPaginas">Número de Páginas</label>
             <input type="number" id="numPaginas" formControlName="numPaginas"
                 placeholder="Informe o número de páginas" />
 
             @if (userForm.get('numPaginas')?.touched) {
-            @if (userForm.get('numPaginas')?.hasError('required')) {
-            <div class="error">O número de páginas é obrigatório.</div>
-            }
-            @if (userForm.get('numPaginas')?.hasError('min')) {
-            <div class="error">O número de páginas não pode ser negativo.</div>
-            }
+                @if (userForm.get('numPaginas')?.hasError('required')) {
+                    <div class="error">O número de páginas é obrigatório.</div>
+                }
+                @if (userForm.get('numPaginas')?.hasError('min')) {
+                    <div class="error">O número de páginas não pode ser menor que 1.</div>
+                }
             }
         </div>
 
+        <!-- Descrição -->
         <div class="form-group">
             <label for="descricao">Descrição</label>
             <textarea id="descricao" formControlName="descricao"
                 placeholder="Informe uma descrição do livro"></textarea>
 
-            @if (userForm.get('descricao')?.touched && userForm.get('descricao')?.hasError('required')) {
-            <div class="error">A descrição é obrigatória.</div>
+            @if (userForm.get('descricao')?.touched) {
+                @if (userForm.get('descricao')?.hasError('required')) {
+                    <div class="error">A descrição é obrigatória.</div>
+                }
+                @if (userForm.get('descricao')?.hasError('maxlength')) {
+                    <div class="error">A descrição não pode exceder 1000 caracteres.</div>
+                }
+                @if (userForm.get('descricao')?.hasError('onlySpaces')) {
+                    <div class="error">A descrição não pode ter só espaços em branco.</div>
+                }
+                @if (userForm.get('descricao')?.hasError('leadingTrailingSpaces')) {
+                    <div class="error">A descrição não pode começar ou terminar com espaço em branco.</div>
+                }
             }
         </div>
 
+        <!-- Preço -->
         <div class="form-group">
             <label for="preco">Preço</label>
             <input type="number" id="preco" formControlName="preco" placeholder="Informe o preço" />
 
             @if (userForm.get('preco')?.touched) {
-            @if (userForm.get('preco')?.hasError('required')) {
-            <div class="error">O preço é obrigatório.</div>
-            }
-            @if (userForm.get('preco')?.hasError('min')) {
-            <div class="error">O preço não pode ser negativo.</div>
-            }
+                @if (userForm.get('preco')?.hasError('required')) {
+                    <div class="error">O preço é obrigatório.</div>
+                }
+                @if (userForm.get('preco')?.hasError('min')) {
+                    <div class="error">O preço não pode ser negativo.</div>
+                }
+                @if (userForm.get('preco')?.hasError('pattern')) {
+                    <div class="error">Formato inválido. Use até 2 casas decimais.</div>
+                }
             }
         </div>
 
+        <!-- Imagem URL -->
         <div class="form-group">
             <label for="imagemUrl">Imagem URL</label>
             <input type="text" id="imagemUrl" formControlName="imagemUrl"
                 placeholder="Informe a URL da imagem do livro" />
 
-            @if (userForm.get('imagemUrl')?.touched && userForm.get('imagemUrl')?.hasError('required')) {
-            <div class="error">A URL da imagem é obrigatória.</div>
+            @if (userForm.get('imagemUrl')?.touched) {
+                @if (userForm.get('imagemUrl')?.hasError('required')) {
+                    <div class="error">A URL da imagem é obrigatória.</div>
+                }
+                @if (userForm.get('imagemUrl')?.hasError('pattern')) {
+                    <div class="error">A URL da imagem deve começar com "http:" e terminar com .jpg, .jpeg, .png ou .gif.</div>
+                }
             }
         </div>
 
+        <!-- Mensagem de erro -->
         @if (mensagemErro) {
-        <div class="alert alert-danger">{{ mensagemErro }}</div>
+            <div class="alert alert-danger">{{ mensagemErro }}</div>
         }
 
+        <!-- Botões -->
         <div class="form-actions">
             <button type="button" class="btn-cancel" (click)="cancelar()">Cancelar</button>
             <button type="button" [disabled]="userForm.invalid" class="btn btn-success" data-bs-toggle="modal"
                 data-bs-target="#confirmarAdicionarModal">Salvar Alterações</button>
         </div>
 
+        <!-- Modal de Confirmação - Bootstrap -->
         <div class="modal fade" id="confirmarAdicionarModal" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
